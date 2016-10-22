@@ -9,7 +9,7 @@ settings = {
     "static_path": os.path.join(os.path.dirname(__file__), "static"),
 }
 
-webcam = WebCam(15)
+webcam = WebCam(10)
 
 class WSHandler(tornado.websocket.WebSocketHandler):
     def check_origin(self, origin):

@@ -2,7 +2,7 @@ import cv2, time, base64
 import threading
 
 class WebCam(threading.Thread):
-    def __init__(self, framerate):
+    def __init__(self, framerate=15):
         threading.Thread.__init__(self)
         self.framerate = framerate
         self.camera = cv2.VideoCapture(-1)
