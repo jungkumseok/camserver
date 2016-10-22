@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Live WebCam Stream</title>
+<meta name="description" content="live webcam stream">
+<meta name="author" content="jungkumseok">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+
+<script src="utils.js"></script>
+<script src="app.js"></script>
+
+</head>
+<body ng-app="webcamApp">
+	<h4>Live WebCam Stream</h4>
+	<div ng-controller="WebCamCtrl as vm">
+		<img ng-src="{{vm.data}}" style="width: 600px; height: 480px;">
+	</div>
+
+</body>
+</html>
