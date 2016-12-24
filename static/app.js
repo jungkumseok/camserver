@@ -25,6 +25,18 @@ var webcamApp = angular.module('webcamApp', ['ngResource', 'ui.router'])
 		$scope.$apply();
 	});
 	
+	self.capture = function(){
+//		var url = self.data.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+//		window.open(url, 'LiveCamCapture.jpg');
+		
+		var downloadLink = document.createElement("a");
+		downloadLink.href = self.data;
+		downloadLink.download = "LiveCamCapture.jpg";
+//		document.body.appendChild(downloadLink);
+		downloadLink.click();
+//		document.body.removeChild(downloadLink);
+	};
+	
 	$scope.$on("$destroy", function(){
 		WebCamService.removeAllEventListeners();
 	});

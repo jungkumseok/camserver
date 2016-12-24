@@ -4,6 +4,9 @@
 		<h4>Live WebCam Stream</h4>
 		<div ng-controller="WebCamCtrl as vm">
 			<img ng-src="{{vm.data}}" class="img-responsive">
+			<div class='text-center'>
+				<button class="btn btn-primary" ng-click="vm.capture()"><i class="fa fa-camera"></i> Capture</button>
+			</div>
 		</div>
 	</div>
 	<div class="col-md-3"></div>
