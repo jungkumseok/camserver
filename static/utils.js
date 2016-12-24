@@ -67,6 +67,9 @@ PersistentWebSocket.prototype.addEventListener = function(eventName, handlerFunc
 	if (this[eventName].indexOf(handlerFunc) < 0) this[eventName].push(handlerFunc);
 	else throw "No Such Event : "+eventName;
 }
+PersistentWebSocket.prototype.removeAllEventListeners = function(eventName){
+	this[event] = [];
+}
 PersistentWebSocket.prototype.send = function(data){
 	if (this.socket.readyState === 1){
 		this.socket.send( JSON.stringify( data ) );

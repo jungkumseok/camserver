@@ -1,0 +1,12 @@
+<div ui-view>
+	<div class='row'>
+		<div class='col-md-3' ng-repeat="cap in captures">
+			{{ cap|file_dtstamp|date:"medium" }}
+			<a ui-sref="captures.view({filename: cap})">
+				<img ng-src="/captured/{{ cap }}.jpg" class="img-responsive">
+			</a>
+			<br/>	
+		</div>
+	</div>
+	
+</div>

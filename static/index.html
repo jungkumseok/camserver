@@ -15,19 +15,36 @@
 <![endif]-->
 <link rel="shortcut icon" href="">
 
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<!-- Font Awesome 4.7.0 --> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Bootstrap 3.3.7 --> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+<!-- jQuery 2.2.4 --> <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<!-- Bootstrap 3.3.7 --> <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Angular 1.5.8 --><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+<!-- angular-resource --> <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-resource.js"></script>
+<!-- UI-router --> <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
 
 <script src="utils.js"></script>
 <script src="app.js"></script>
 
 </head>
 <body ng-app="webcamApp">
-	<h4>Live WebCam Stream</h4>
-	<div ng-controller="WebCamCtrl as vm">
-		<img ng-src="{{vm.data}}" style="width: 600px; height: 480px;">
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	    </div>
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	      <ul class="nav navbar-nav">
+	        <li ui-sref-active="active"><a ui-sref="home">Live WebCam</a></li>
+	        <li ui-sref-active="active"><a ui-sref="captures">See Captured</a></li>
+	      </ul>
+	  </div>
+	</nav>
+	<div class="container-fluid">
+		<div ui-view>
+		</div>
 	</div>
-
+	
 </body>
 </html>

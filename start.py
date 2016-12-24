@@ -1,4 +1,4 @@
-import os, sys
+import os, sys, json
 import tornado.ioloop
 import tornado.web
 import tornado.websocket
@@ -24,8 +24,16 @@ class WSHandler(tornado.websocket.WebSocketHandler):
     def on_close(self):
         print("Websocket Closed")
         
+class CapturedFilesHandler(tornado.web.RequestHandler):
+    def get(self):
+        flist = os.listdir('static/captured')
+        files = [f.split('.')[0] for f in flist if os.path.isfile(os.path.join('static/captured', f)) and f.split('.')[1] == 'mp4']
+        files = list(reversed(sorted(files)))
+        self.write( json.dumps(files))
+        
 def make_app():
     return tornado.web.Application([ (r'/webcam', WSHandler),
+                                     (r'/CaptureFiles/', CapturedFilesHandler),
                                      (r'/(.*)', tornado.web.StaticFileHandler, {'path': settings['static_path'], 'default_filename': 'index.html'}),
                                     ])
     

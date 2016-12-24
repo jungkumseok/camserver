@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="col-md-3">
+		<a ui-sref="captures"><i class="fa fa-chevron-left"></i> Back</a>
+	</div>
+	<div class="col-md-6 col-xs-12">
+		<h4>{{ filename|file_dtstamp|date:"medium" }}</h4>
+		<div class="embed-responsive embed-responsive-4by3">
+			<video controls ng-src="{{ videopath }}" class="embed-responsive-item"></video>
+		</div>
+		
+	</div>
+	<div class="col-md-3"></div>
+</div>
