@@ -77,7 +77,7 @@ class WebCam(threading.Thread):
                 cv2.rectangle(thresh, (x, y), (x + w, y + h), (0, 0, 255), 2)
                 obj_cnt += 1
             cv2.putText(self.raw_image, ("Recording" if self.isRecording else "Idle"), (10, 20),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.75, (0, (0 if self.isRecording else 255), (255 if self.isRecording else 0)), 2)
+                cv2.FONT_HERSHEY_SIMPLEX, 0.6, ((0 if self.isRecording else 255), (0 if self.isRecording else 255), 255), 2)
             cv2.putText(self.raw_image, datetime.datetime.now().strftime("%A %d %B %Y %I:%M:%S.%f %p"),
                 (10, self.raw_image.shape[0] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.35, (255, 255, 255), 1)
 #             cv2.imshow('diff', self.raw_image)
