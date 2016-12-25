@@ -5,7 +5,7 @@ var webcamApp = angular.module('webcamApp', ['ngResource', 'ui.router'])
 	return function(filename){
 		var dtstring = (filename.split('.')[0]).split('_')[1];
 		var dtstamp = new Date(dtstring.slice(0, 4),
-								dtstring.slice(4, 6),
+								parseInt(dtstring.slice(4, 6)) -1,
 								dtstring.slice(6, 8),
 								dtstring.slice(8, 10),
 								dtstring.slice(10, 12),
