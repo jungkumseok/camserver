@@ -1,0 +1,5 @@
+<ul class="pagination">
+	<li ng-if="parseInt(currentPage) > 1"><a ui-sref="captures({ page: parseInt(currentPage) - 1 })"><span aria-hidden="true">&laquo;</span> Previous</a></li>
+	<li ng-repeat="pg in pageList" ng-class="{ active: pg == parseInt(currentPage) }"><a ui-sref="captures({page: pg})">{{ pg }}</a></li>
+	<li ng-if="parseInt(currentPage) < totalPages"><a ui-sref="captures({ page: parseInt(currentPage) + 1 })"><span aria-hidden="true">&raquo;</span> Next</a></li>
+</ul>

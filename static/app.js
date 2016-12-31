@@ -42,6 +42,35 @@ var webcamApp = angular.module('webcamApp', ['ngResource', 'ui.router'])
 	});
 	
 })
+.directive('pagination', ['$state', function($state){
+	return {
+		restrict: 'E',
+		scope: {
+			totalPages: '=',
+			currentPage: '=',
+			pageRange: '='
+		},
+		controller: function($scope){
+			$scope.parseInt = parseInt;
+			var self = this;
+			$scope.pageList = [];
+			$scope.$watch(function(){
+				if ($scope.totalPages && $scope.currentPage) return $scope.currentPage;
+				else return undefined;
+			}, function(newVal){
+				var si = parseInt(newVal) - $scope.pageRange;
+				var fi = parseInt(newVal) + $scope.pageRange;
+				$scope.pageList = [];
+				for (var i=si; i <= fi; i++){
+					if (i > 0 && i <= $scope.totalPages) $scope.pageList.push(i);
+				};
+				
+			});
+		},
+		controllerAs: '$pagination',
+		templateUrl: '/views/pagination.html'
+	}
+}])
 .config(['$stateProvider', '$urlRouterProvider', 
         function($stateProvider, $urlRouterProvider){
     		
@@ -51,14 +80,21 @@ var webcamApp = angular.module('webcamApp', ['ngResource', 'ui.router'])
     				templateUrl: 'views/main.html',
     			})
     			.state('captures', {
-    				url: '/captures/',
-    				controller: function($scope, $http){
+    				url: '/captures/:page/',
+    				params: {
+    					page: '1'
+    				},
+    				controller: function($scope, $http, $stateParams){
+    					$scope.parseInt = parseInt
     					$scope.captures = [];
+    					$scope.page = $stateParams.page;
     					
     					$scope.getCaptures = function(){
-    						$http.get('/CaptureFiles/')
+    						$http.get('/CaptureFiles/'+$stateParams.page+'/')
     						   .then(function(response){
-    							   $scope.captures = response.data;
+    							   $scope.captures = response.data.filenames;
+    							   $scope.total_pages = response.data.total_pages;
+    							   console.log($scope.total_pages);
     						   });
     					}
     					

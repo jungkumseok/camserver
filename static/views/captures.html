@@ -1,4 +1,11 @@
 <div ui-view>
+	<div class='row well'>
+		<div class='col-md-12 text-center'>
+			<pagination total-pages="total_pages"
+						current-page="page"
+						page-range="2"></pagination>
+		</div>
+	</div>
 	<div class='row'>
 		<div class='col-md-3' ng-repeat="cap in captures">
 			{{ cap|file_dtstamp|date:"medium" }}
@@ -6,6 +13,13 @@
 				<img ng-src="/captured/{{ cap }}.jpg" class="img-responsive">
 			</a>
 			<br/>	
+		</div>
+	</div>
+	<div class='row well'>
+		<div class='col-md-12 text-center'>
+			<pagination total-pages="total_pages"
+						current-page="page"
+						page-range="3"></pagination>
 		</div>
 	</div>
 	
