@@ -23,7 +23,11 @@ class WebCam(threading.Thread):
     def __init__(self, framerate=15):
         threading.Thread.__init__(self)
         self.framerate = framerate
-        self.camera = cv2.VideoCapture(-1)
+        si = -1
+        self.camera = cv2.VideoCapture(si)        
+        while not self.camera.isOpened():
+            si = si + 1
+            self.camera = cv2.VideoCapture(si)        
         self.raw_image = None
         self.gray_image = None
         self.image = None

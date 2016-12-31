@@ -28,7 +28,6 @@ class CapturedFilesHandler(tornado.web.RequestHandler):
     def get(self, page):
         page = int(page)
         flist = os.listdir('static/captured')
-        print(flist)
         files = [f.split('.')[0] for f in flist if os.path.isfile(os.path.join('static/captured', f)) and f.split('.')[1] == 'mp4']
         files = list(reversed(sorted(files)))
         si = (page - 1) * 10 if page > 0 else 0
