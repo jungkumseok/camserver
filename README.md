@@ -9,6 +9,11 @@ By default, the application binds to port 8100 and captures images at 10 fps.
 
 During execution, the application will compare the newly acquired image with the previous image to see if there is a significant difference ( Delta > threshold ) between the two frames. If there is a significant difference, it will start a `cv2.VideoWriter` stream and continue recording images until it determines the stream has "stabilized" (no more changes in the images); this is controlled by the `WebCam.diff_buffer`, which is a list of Delta's for the past N frames. If `WebCam.diff_buffer` is a list of length 20, the application will determine that the stream is "stable" if all of the 20 Deltas are below the threshold. Additionally, the application will discard a recorded stream if there are less than 5 frames with significant changes, in order to ignore minor movements or noises in the image. The recorded videos are saved as mp4 and served in the static folder for direct viewing from the browser.
 
+Below is a sample video:
+
+<a href="http://res.jungabyte.com/sites/github/camserver_demo.mp4" target="_blank"><img src="http://res.jungabyte.com/sites/github/camserver_demo.jpg" 
+alt="Demo Capture" width="320" height="240" border="10" /><p>Click Image to see Captured Video</p></a>
+
 ##Dependencies
 
 * Python 3
